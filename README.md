@@ -7,5 +7,8 @@
 
 #bootstrap 
 - Sử dụng class name bình thường
-#tailwind
+
+
+
+#tailwindcss
 - Sử dụng tw- trước tên class cần sử dụng
