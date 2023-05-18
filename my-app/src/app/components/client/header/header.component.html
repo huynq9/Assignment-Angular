@@ -1,72 +1,92 @@
-<!-- Breadcrumb -->
-<nav class="flex justify-between" aria-label="Breadcrumb">
-    <ol class="inline-flex items-center mb-3 sm:mb-0">
-        <li>
+<header aria-label="Site Header" class="border-b border-gray-100  ">
+    <div class="mx-auto flex h-16 max-w-screen-2xl items-center text-black justify-between sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <button type="button" class="p-2 lg:hidden">
+                <svg viewBox="100 100 50 32" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M 150.07 131.439 L 131.925 100 L 122.206 105.606 L 137.112 131.439 L 150.07 131.439 Z M 132.781 131.439 L 120.797 110.692 L 111.078 116.298 L 119.823 131.439 L 132.781 131.439 Z M 109.718 121.401 L 115.509 131.439 L 102.551 131.439 L 100 127.007 L 109.718 121.401 Z"
+                        fill="black"></path>
+                </svg>
+            </button>
+
+            <a href="#" class="flex">
+                <span class="sr-only">Logo</span>
+                <span class="h-10 w-32 ">
+                    <svg viewBox="100 100 105 32" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M 150.07 131.439 L 131.925 100 L 122.206 105.606 L 137.112 131.439 L 150.07 131.439 Z M 132.781 131.439 L 120.797 110.692 L 111.078 116.298 L 119.823 131.439 L 132.781 131.439 Z M 109.718 121.401 L 115.509 131.439 L 102.551 131.439 L 100 127.007 L 109.718 121.401 Z"
+                            fill="black"></path>
+                    </svg>
+                </span>
+            </a>
+        </div>
+
+        <div class="flex flex-1 items-center justify-end gap-8">
+            <nav aria-label="Site Nav"
+                class="hidden lg:flex lg:gap-4 lg:text-xs lg:font-bold lg:uppercase lg:tracking-wide lg:text-gray-500">
+                <a href="/about"
+                    class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">
+                    About
+                </a>
+
+                <a href="/news"
+                    class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">
+                    News
+                </a>
+
+                <a href="/products"
+                    class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">
+                    Products
+                </a>
+
+                <a href="/contact"
+                    class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">
+                    Contact
+                </a>
+            </nav>
+
             <div class="flex items-center">
-                <button id="dropdownProject" data-dropdown-toggle="dropdown-project"
-                    class="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white dark:focus:ring-gray-700"><svg
-                        class="mr-1.5 w-3 h-3" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 448 512">
-                        <path
-                            d="M80 104c13.3 0 24-10.7 24-24s-10.7-24-24-24S56 66.7 56 80s10.7 24 24 24zm80-24c0 32.8-19.7 61-48 73.3v87.8c18.8-10.9 40.7-17.1 64-17.1h96c35.3 0 64-28.7 64-64v-6.7C307.7 141 288 112.8 288 80c0-44.2 35.8-80 80-80s80 35.8 80 80c0 32.8-19.7 61-48 73.3V160c0 70.7-57.3 128-128 128H176c-35.3 0-64 28.7-64 64v6.7c28.3 12.3 48 40.5 48 73.3c0 44.2-35.8 80-80 80s-80-35.8-80-80c0-32.8 19.7-61 48-73.3V352 153.3C19.7 141 0 112.8 0 80C0 35.8 35.8 0 80 0s80 35.8 80 80zm232 0c0-13.3-10.7-24-24-24s-24 10.7-24 24s10.7 24 24 24s24-10.7 24-24zM80 456c13.3 0 24-10.7 24-24s-10.7-24-24-24s-24 10.7-24 24s10.7 24 24 24z" />
-                    </svg>flowbite.com<svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor"
-                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg></button>
-                <div id="dropdown-project"
-                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">themesberg.com</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">ui.glass</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">iconscale</a>
-                        </li>
-                    </ul>
+                <div class="flex items-center border-x border-gray-100">
+                    <span class="border-e border-e-gray-100">
+                        <a href="/cart"
+                            class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-red-700">
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                            </svg>
+
+                            <span class="sr-only">Cart</span>
+                        </a>
+                    </span>
+
+                    <span class="border-e border-e-gray-100">
+                        <a href="/account"
+                            class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-red-700">
+                            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+
+                            <span class="sr-only"> Account </span>
+                        </a>
+                    </span>
+
+                    <span class="hidden sm:block">
+                        <a href="/search"
+                            class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-red-700">
+                            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+
+                            <span class="sr-only"> Search </span>
+                        </a>
+                    </span>
                 </div>
             </div>
-        </li>
-        <span class="mx-2 text-gray-400">/</span>
-        <li aria-current="page">
-            <div class="flex items-center">
-                <button id="dropdownDatabase" data-dropdown-toggle="dropdown-database"
-                    class="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-600 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-gray-300 dark:focus:ring-gray-700"><svg
-                        class="mr-1.5 w-3 h-3" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 448 512">
-                        <path
-                            d="M80 104c13.3 0 24-10.7 24-24s-10.7-24-24-24S56 66.7 56 80s10.7 24 24 24zm80-24c0 32.8-19.7 61-48 73.3v87.8c18.8-10.9 40.7-17.1 64-17.1h96c35.3 0 64-28.7 64-64v-6.7C307.7 141 288 112.8 288 80c0-44.2 35.8-80 80-80s80 35.8 80 80c0 32.8-19.7 61-48 73.3V160c0 70.7-57.3 128-128 128H176c-35.3 0-64 28.7-64 64v6.7c28.3 12.3 48 40.5 48 73.3c0 44.2-35.8 80-80 80s-80-35.8-80-80c0-32.8 19.7-61 48-73.3V352 153.3C19.7 141 0 112.8 0 80C0 35.8 35.8 0 80 0s80 35.8 80 80zm232 0c0-13.3-10.7-24-24-24s-24 10.7-24 24s10.7 24 24 24s24-10.7 24-24zM80 456c13.3 0 24-10.7 24-24s-10.7-24-24-24s-24 10.7-24 24s10.7 24 24 24z" />
-                    </svg>databaseName<svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor"
-                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg></button>
-                <div id="dropdown-database"
-                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">databaseProd</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">databaseStaging</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">flowbiteProd</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </li>
-    </ol>
-</nav>
+        </div>
+    </div>
+</header>
