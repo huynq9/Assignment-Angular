@@ -1,46 +1,92 @@
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="https://flowbite.com/" class="flex items-center">
-            <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-        </a>
-        <div class="flex md:order-2">
-            <button type="button"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Get
-                started</button>
-            <button data-collapse-toggle="navbar-cta" type="button"
-                class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                aria-controls="navbar-cta" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                        clip-rule="evenodd"></path>
+<header aria-label="Site Header" class="border-b border-gray-100  ">
+    <div class="mx-auto flex h-16 max-w-screen-2xl items-center text-black justify-between sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <button type="button" class="p-2 lg:hidden">
+                <svg viewBox="100 100 50 32" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M 150.07 131.439 L 131.925 100 L 122.206 105.606 L 137.112 131.439 L 150.07 131.439 Z M 132.781 131.439 L 120.797 110.692 L 111.078 116.298 L 119.823 131.439 L 132.781 131.439 Z M 109.718 121.401 L 115.509 131.439 L 102.551 131.439 L 100 127.007 L 109.718 121.401 Z"
+                        fill="black"></path>
                 </svg>
             </button>
+
+            <a href="#" class="flex">
+                <span class="sr-only">Logo</span>
+                <span class="h-10 w-32 ">
+                    <svg viewBox="100 100 105 32" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M 150.07 131.439 L 131.925 100 L 122.206 105.606 L 137.112 131.439 L 150.07 131.439 Z M 132.781 131.439 L 120.797 110.692 L 111.078 116.298 L 119.823 131.439 L 132.781 131.439 Z M 109.718 121.401 L 115.509 131.439 L 102.551 131.439 L 100 127.007 L 109.718 121.401 Z"
+                            fill="black"></path>
+                    </svg>
+                </span>
+            </a>
         </div>
-        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
-            <ul
-                class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                <li>
-                    <a href="#"
-                        class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
-                        aria-current="page">Home</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
-                </li>
-            </ul>
+
+        <div class="flex flex-1 items-center justify-end gap-8">
+            <nav aria-label="Site Nav"
+                class="hidden lg:flex lg:gap-4 lg:text-xs lg:font-bold lg:uppercase lg:tracking-wide lg:text-gray-500">
+                <a href="/about"
+                    class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">
+                    About
+                </a>
+
+                <a href="/news"
+                    class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">
+                    News
+                </a>
+
+                <a href="/products"
+                    class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">
+                    Products
+                </a>
+
+                <a href="/contact"
+                    class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">
+                    Contact
+                </a>
+            </nav>
+
+            <div class="flex items-center">
+                <div class="flex items-center border-x border-gray-100">
+                    <span class="border-e border-e-gray-100">
+                        <a href="/cart"
+                            class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-red-700">
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                            </svg>
+
+                            <span class="sr-only">Cart</span>
+                        </a>
+                    </span>
+
+                    <span class="border-e border-e-gray-100">
+                        <a href="/account"
+                            class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-red-700">
+                            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+
+                            <span class="sr-only"> Account </span>
+                        </a>
+                    </span>
+
+                    <span class="hidden sm:block">
+                        <a href="/search"
+                            class="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-red-700">
+                            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+
+                            <span class="sr-only"> Search </span>
+                        </a>
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
-</nav>
+</header>
