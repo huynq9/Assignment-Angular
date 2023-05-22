@@ -14,6 +14,8 @@ import { FooterComponent } from './components/client/footer/footer.component';
 import { ButtonModule } from 'primeng/button';
 import { CardCategoryComponent } from './components/client/card-category/card-category.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { AddComponent } from './admin/add/add.component
 import { CateComponent } from './pages/client/cate/cate.component';
 import { CartComponent } from './pages/client/cart/cart.component';
 import { CheckoutComponent } from './pages/client/checkout/checkout.component';
@@ -31,6 +33,8 @@ import { ProductDetailComponent } from './pages/client/product-detail/product-de
     CardProductComponent,
     FooterComponent,
     CardCategoryComponent,
+    DashboardComponent,
+    AddComponent,
     CateComponent,
     CartComponent,
     CheckoutComponent,
@@ -45,7 +49,7 @@ import { ProductDetailComponent } from './pages/client/product-detail/product-de
     GalleriaModule,
     RippleModule,
     ButtonModule,
-    DropdownModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent],
