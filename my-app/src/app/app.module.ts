@@ -14,6 +14,14 @@ import { FooterComponent } from './components/client/footer/footer.component';
 import { ButtonModule } from 'primeng/button';
 import { CardCategoryComponent } from './components/client/card-category/card-category.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { AddComponent } from './admin/add/add.component
+import { CateComponent } from './pages/client/cate/cate.component';
+import { CartComponent } from './pages/client/cart/cart.component';
+import { CheckoutComponent } from './pages/client/checkout/checkout.component';
+import { SignInComponent } from './pages/client/sign-in/sign-in.component';
+import { SignUpComponent } from './pages/client/sign-up/sign-up.component';
+import { ProductDetailComponent } from './pages/client/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +33,14 @@ import { DropdownModule } from 'primeng/dropdown';
     CardProductComponent,
     FooterComponent,
     CardCategoryComponent,
+    DashboardComponent,
+    AddComponent,
+    CateComponent,
+    CartComponent,
+    CheckoutComponent,
+    SignInComponent,
+    SignUpComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +49,7 @@ import { DropdownModule } from 'primeng/dropdown';
     GalleriaModule,
     RippleModule,
     ButtonModule,
-    DropdownModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent],
