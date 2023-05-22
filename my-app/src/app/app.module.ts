@@ -14,6 +14,9 @@ import { FooterComponent } from './components/client/footer/footer.component';
 import { ButtonModule } from 'primeng/button';
 import { CardCategoryComponent } from './components/client/card-category/card-category.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { CateComponent } from './pages/client/cate/cate.component';
+import { CartComponent } from './pages/client/cart/cart.component';
+import { CheckoutComponent } from './pages/client/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { DropdownModule } from 'primeng/dropdown';
     CardProductComponent,
     FooterComponent,
     CardCategoryComponent,
+    CateComponent,
+    CartComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
