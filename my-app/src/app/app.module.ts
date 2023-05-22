@@ -17,6 +17,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CateComponent } from './pages/client/cate/cate.component';
 import { CartComponent } from './pages/client/cart/cart.component';
 import { CheckoutComponent } from './pages/client/checkout/checkout.component';
+import { SignInComponent } from './pages/client/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CheckoutComponent } from './pages/client/checkout/checkout.component';
     CateComponent,
     CartComponent,
     CheckoutComponent,
+    SignInComponent,
   ],
   imports: [
     BrowserModule,
