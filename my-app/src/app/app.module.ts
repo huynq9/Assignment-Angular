@@ -15,7 +15,13 @@ import { ButtonModule } from 'primeng/button';
 import { CardCategoryComponent } from './components/client/card-category/card-category.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
-import { AddComponent } from './admin/add/add.component';
+import { AddComponent } from './admin/add/add.component
+import { CateComponent } from './pages/client/cate/cate.component';
+import { CartComponent } from './pages/client/cart/cart.component';
+import { CheckoutComponent } from './pages/client/checkout/checkout.component';
+import { SignInComponent } from './pages/client/sign-in/sign-in.component';
+import { SignUpComponent } from './pages/client/sign-up/sign-up.component';
+import { ProductDetailComponent } from './pages/client/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +35,12 @@ import { AddComponent } from './admin/add/add.component';
     CardCategoryComponent,
     DashboardComponent,
     AddComponent,
+    CateComponent,
+    CartComponent,
+    CheckoutComponent,
+    SignInComponent,
+    SignUpComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,
