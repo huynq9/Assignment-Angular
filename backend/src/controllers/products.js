@@ -32,7 +32,7 @@ export const create = async (req, res) => {
       $addToSet: {
         products: product._id,
       },
-    });   
+    });
     return res.status(200).json({
       message: "create sucessfull",
       product,
@@ -42,5 +42,34 @@ export const create = async (req, res) => {
   }
 };
 export const update = async (req, res) => {
-  
-}
+  try {
+    const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    if (!product) {
+      return res.status(404).json({
+        message: "Product not found",
+      });
+    }
+    return res.status(200).json({
+      message: "Product updated",
+      data: product,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "server error",
+    });
+  }
+};
+export const remove = async (req, res) => {
+  try {
+    await Product.findOneAndDelete({ _id: req.params.id });
+    return res.status(200).json({
+      message: "Xóa sản phẩm thành công",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "server error",
+    });
+  }
+};
