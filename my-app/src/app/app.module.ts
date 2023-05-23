@@ -25,6 +25,7 @@ import { SignInComponent } from './pages/client/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/client/sign-up/sign-up.component';
 import { ProductDetailComponent } from './pages/client/product-detail/product-detail.component';
 import { LayOutAdminComponent } from './layouts/admin/lay-out-admin/lay-out-admin.component';
+import { NotFoundComponent } from './pages/client/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { LayOutAdminComponent } from './layouts/admin/lay-out-admin/lay-out-admi
     AddComponent,
     NavadminComponent,
     LayOutAdminComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
