@@ -24,7 +24,6 @@ const routes: Routes = [
       { path: 'categories', component: CateComponent },
       { path: 'product-detail', component: ProductDetailComponent },
       { path: 'check-out', component: CheckoutComponent },
-      { path: '**', component: NotFoundComponent },
     ],
   },
   {
@@ -38,6 +37,7 @@ const routes: Routes = [
   },
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
