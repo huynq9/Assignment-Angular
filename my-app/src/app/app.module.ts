@@ -15,15 +15,10 @@ import { ButtonModule } from 'primeng/button';
 import { CardCategoryComponent } from './components/client/card-category/card-category.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
-
+import { CarouselModule } from 'primeng/carousel';
 import { AddComponent } from './pages/admin/add/add.component';
 import { NavadminComponent } from './components/admin/navadmin/navadmin.component';
-import { CateComponent } from './pages/client/cate/cate.component';
-import { CartComponent } from './pages/client/cart/cart.component';
-import { CheckoutComponent } from './pages/client/checkout/checkout.component';
-import { SignInComponent } from './pages/client/sign-in/sign-in.component';
-import { SignUpComponent } from './pages/client/sign-up/sign-up.component';
-import { ProductDetailComponent } from './pages/client/product-detail/product-detail.component';
+
 import { LayOutAdminComponent } from './layouts/admin/lay-out-admin/lay-out-admin.component';
 import { NotFoundComponent } from './pages/client/not-found/not-found.component';
 
@@ -51,6 +46,7 @@ import { NotFoundComponent } from './pages/client/not-found/not-found.component'
     RippleModule,
     ButtonModule,
     DropdownModule,
+    CarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
