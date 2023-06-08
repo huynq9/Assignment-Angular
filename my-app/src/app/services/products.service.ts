@@ -8,6 +8,12 @@ import { Observable } from 'rxjs';
 export class ProductsService {
   constructor(private http: HttpClient) {}
   getproducts(): Observable<any> {
-    return this.http.get('http://localhost:9999/products');
+    return this.http.get('http://localhost:9999/api/products');
+  }
+  getproduct(id: string): Observable<any> {
+    return this.http.get('http://localhost:9999/api/products/' + id);
+  }
+  addproduct(product: any): Observable<any> {
+    return this.http.post<any>('http://localhost:9999/api/products', product);
   }
 }
