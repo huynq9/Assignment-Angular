@@ -7,21 +7,39 @@ import { sizeSchema } from "./sizes";
 const productSchema = new mongoose.Schema(
   {
     name: String,
-    price: Number,
-    price_sale: Number,
-    sale_offer: { type: Number, default: 0 },
-    description: String,
-    description_short: String,
-    imgUrl: [{ type: String }],
-    isPublic: { type: Boolean, default: true },
-    colors: [colorSchema],
-    sizes: [sizeSchema],
-    categoryId: { type: mongoose.Types.ObjectId, ref: "Categories" },
+    price: {
+      type: Number,
+    },
+    price_sale: {
+      type: Number,
+      default: 0,
+    },
+    sale_offer: {
+      type: Number,
+      default: 0,
+    },
+    desc: {
+      type: String,
+    },
+    isFavorited: {
+      type: Boolean,
+      default: false,
+    },
+    isInvisible: {
+      type: Boolean,
+      default: true,
+    },
+    isNew: {
+      type: Boolean,
+      default: true,
+    },
+    categoryId: {
+      type: String,
+      ref: "Categories",
+    },
   },
   { timestamps: true, versionKey: false }
 );
-
-productSchema.plugin(mongoosePaginate);
 
 productSchema.pre("save", function (next) {
   if (this.isModified("sale_offer") || this.isModified("price")) {

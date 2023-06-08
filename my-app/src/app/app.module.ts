@@ -18,9 +18,12 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 import { CarouselModule } from 'primeng/carousel';
 import { AddComponent } from './pages/admin/add/add.component';
 import { NavadminComponent } from './components/admin/navadmin/navadmin.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayOutAdminComponent } from './layouts/admin/lay-out-admin/lay-out-admin.component';
 import { NotFoundComponent } from './pages/client/not-found/not-found.component';
+import { HttpClientModule } from '@angular/common/http';
+import { EditComponent } from './pages/admin/edit/edit.component';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,7 @@ import { NotFoundComponent } from './pages/client/not-found/not-found.component'
     NavadminComponent,
     LayOutAdminComponent,
     NotFoundComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +51,10 @@ import { NotFoundComponent } from './pages/client/not-found/not-found.component'
     ButtonModule,
     DropdownModule,
     CarouselModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    ToastModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
