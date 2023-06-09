@@ -16,4 +16,5 @@ export class ProductsService {
   addproduct(product: any): Observable<any> {
     return this.http.post<any>('http://localhost:9999/api/products', product);
   }
+  
 }

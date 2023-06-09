@@ -1,12 +1,10 @@
-<section class="py-20 overflow-hidden bg-white font-poppins dark:bg-gray-800">
+<section class="py-20 overflow-hidden bg-white font-poppins dark:bg-gray-800" *ngIf="product">
   <div class="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
     <div class="flex flex-wrap -mx-4">
       <div class="w-full px-4 md:w-1/2 ">
         <div class="sticky top-0 z-50 overflow-hidden ">
           <div class="relative mb-6 lg:mb-10" style="height:450px;">
-            <img
-              src="https://i.postimg.cc/8zr7BpVj/long-sleeved-t-shirt-isolated-2021-08-26-17-06-58-utc-removebg-preview.png"
-              alt="" class="object-contain w-full
+            <img src="" alt="" class="object-contain w-full
                  h-full  ">
           </div>
           <div class="flex-wrap hidden md:flex my-4 mx-20">
@@ -50,7 +48,7 @@
           <div class="pb-6 mb-8 border-b border-gray-200 dark:border-gray-700">
             <span class="text-lg font-medium text-rose-500 dark:text-rose-200">New</span>
             <h2 class="max-w-xl mt-2 mb-6 text-xl font-bold dark:text-gray-300 md:text-4xl">
-              Long-Sleeved T-shirt
+              {{product.name}}
             </h2>
             <div class="flex flex-wrap items-center mb-6">
               <ul class="flex mb-4 mr-2 lg:mb-0">
@@ -112,7 +110,9 @@
               </div>
             </div>
             <p class="inline-block text-2xl font-semibold text-gray-700 dark:text-gray-400 ">
-              <span>$994.00</span>
+              <span>
+                {{product.price}}
+              </span>
               <span class="text-base font-normal text-gray-500 line-through dark:text-gray-400">$1500.00</span>
             </p>
           </div>
