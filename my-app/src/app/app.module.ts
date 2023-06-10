@@ -31,9 +31,28 @@ import { NotFoundComponent } from './pages/client/not-found/not-found.component'
 import { HttpClientModule } from '@angular/common/http';
 import { EditComponent } from './pages/admin/edit/edit.component';
 import { ToastModule } from 'primeng/toast';
-import { CarouselComponent } from './pages/client/home/carousel/carousel.component';
+
 import { ImageModule } from 'primeng/image';
 import { TagModule } from 'primeng/tag';
+import { TableModule } from 'primeng/table';
+import { ToolbarModule } from 'primeng/toolbar';
+import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { RatingModule } from 'primeng/rating';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { FileUploadModule } from 'primeng/fileupload';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { Cloudinary } from 'cloudinary-core';
+
+const cloudinaryConfiguration = {
+  cloud_name: 'YOUR_CLOUD_NAME',
+  api_key: 'YOUR_API_KEY',
+  api_secret: 'YOUR_API_SECRET',
+};
+
+const cloudinary = {
+  Cloudinary: Cloudinary,
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,13 +68,10 @@ import { TagModule } from 'primeng/tag';
     NavadminComponent,
     SignUpComponent,
     SignInComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
     LayOutAdminComponent,
     NotFoundComponent,
     EditComponent,
-
-    CarouselComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -65,19 +81,23 @@ import { TagModule } from 'primeng/tag';
     RippleModule,
     ButtonModule,
     DropdownModule,
-
-    FormsModule, 
+    ToolbarModule,
+    FormsModule,
     CarouselModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     ToastModule,
-
+    TableModule,
     ImageModule,
     TagModule,
-
-
-
+    DialogModule,
+    ConfirmDialogModule,
+    RatingModule,
+    RadioButtonModule,
+    DropdownModule,
+    FileUploadModule,
+    NgxDropzoneModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -4,7 +4,43 @@
     class="text-4xl font-bold mx-auto h-16 max-w-screen-2xl items-center text-black justify-between sm:px-6 lg:px-8 mt-10 mb-5">
     New Arirrvals</h1>
 <p-toast></p-toast>
-<app-carousel [products]="products" (handleClickEvent)="onCarouselClick($event)"></app-carousel>
+
+<div class="card">
+    <p-carousel [value]="productsNew" [numVisible]="5" [numScroll]="3" [circular]="true"
+        [responsiveOptions]="responsiveOptions" autoPlayInterval="3000">
+        <ng-template let-product pTemplate="item">
+            <div class="group block overflow-hidden ">
+
+
+                <div class="relative border-1 surface-border border-round m-2 text-center py-56 px-3 p-button-danger">
+                    <p-tag value="New" class="absolute top-2 left-2 z-10"></p-tag>
+                    <button class="pi pi-heart-fill  absolute top-2 right-2 z-10" *ngIf="product"
+                        [class.text-red-500]="product.isFavorited === true"
+                        [class.text-white]="product.isFavorited === false" (click)="onCarouselClick(product)"></button>
+                    <img src="{{product.image[0]}}" alt=""
+                        class="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0" />
+
+                    <img src="{{product.image[1]}}" alt=""
+                        class="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100" />
+                </div>
+
+                <div class="relative bg-white pt-3">
+                    <h3 class="text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4">
+                        {{product.name}}
+                    </h3>
+
+                    <div class="mt-1.5 flex items-center justify-between text-gray-900">
+                        <p class="tracking-wide">{{product.price}}</p>
+
+                        <p class="text-xs uppercase tracking-wide">6 Colors</p>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-carousel>
+</div>
+
+
 
 <section class="mx-auto  max-w-screen-2xl items-center text-black justify-between sm:px-6 lg:px-8 my-20">
     <div class="flex gap-3">
@@ -12,6 +48,7 @@
         <app-card-category></app-card-category>
         <app-card-category></app-card-category>
         <app-card-category></app-card-category>
+        <button (click)="show()" class="text-red-500">cc</button>
     </div>
 </section>
 <section class=" mx-auto  max-w-screen items-center bg-[#f5f5e5] text-black justify-between  lg:px-8  ">

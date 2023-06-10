@@ -10,16 +10,39 @@ import { ProductsService } from 'src/app/services/products.service';
   providers: [MessageService],
 })
 export class HomeComponent implements OnInit {
-  products!: IProduct[];
+  productsNew!: IProduct[];
+  productSale: IProduct[] = [];
+  responsiveOptions!: any[];
   constructor(
     private ps: ProductsService,
     private messageService: MessageService
   ) {}
 
   ngOnInit() {
+    this.responsiveOptions = [
+      {
+        breakpoint: '1199px',
+        numVisible: 1,
+        numScroll: 1,
+      },
+      {
+        breakpoint: '991px',
+        numVisible: 2,
+        numScroll: 1,
+      },
+      {
+        breakpoint: '767px',
+        numVisible: 1,
+        numScroll: 1,
+      },
+    ];
     this.ps.getproducts().subscribe(({ products }) => {
-      this.products = products.filter((product) => product.isNew === true);
-      console.log(products);
+      this.productSale = products.filter(
+        (product) => product.sale_offer > 0 && product.isInvisible === true
+      );
+      this.productsNew = products.filter(
+        (product) => product.isNew === true && product.isInvisible === true
+      );
     });
   }
   onCarouselClick(product: IProduct) {

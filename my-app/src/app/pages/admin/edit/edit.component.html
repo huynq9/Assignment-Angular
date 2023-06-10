@@ -1,0 +1,124 @@
+<th class="text-5xl my-3">Add Product</th>
+
+<!-- image -->
+<div class="mb-6">
+    <label for="success" class="block mb-2 text-sm font-medium dark:text-green-500">Image</label>
+    <ngx-dropzone (change)="onSelect($event)">
+        <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+        <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+            [removable]="true" (removed)="onRemove(f)">
+            <ngx-dropzone-label> ({{ f.type }})</ngx-dropzone-label>
+        </ngx-dropzone-image-preview>
+    </ngx-dropzone>
+    <p-progressBar class="custom_style" [value]="value"
+        [style.display]="showProgressBar ? 'block' : 'none'"></p-progressBar>
+    <button (click)="uploadFile()" pButton pRipple label="Upload image" class="p-button-success custom_style"></button>
+</div>
+
+<form [formGroup]="productForm" (ngSubmit)="onHandleSubmit()">
+    <!-- name  -->
+    <div class="mb-6">
+        <label for="success" class="block mb-2 text-sm font-medium dark:text-green-500">
+            Name</label>
+        <input type="text" id="success" formControlName="name"
+            class="bg-green-50 border text-green-900 dark:text-green-400 text-sm rounded-lg focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-green-500"
+            placeholder="Name..." />
+        <!-- validate show -->
+        <div *ngIf="
+        productForm.get('name')?.hasError('required') &&
+        (productForm.get('name')?.dirty ||
+          productForm.get('name')?.touched ||
+          submitted)
+      " class="text-red-500 text-xs mt-1">
+            Name is required.
+        </div>
+    </div>
+    <!-- price  -->
+    <div class="mb-6">
+        <label for="success" class="block mb-2 text-sm font-medium dark:text-green-500">
+            Price</label>
+        <input type="number" id="success" formControlName="price"
+            class="bg-green-50 border text-green-900 dark:text-green-400 dark:placeholder-green-500 text-sm rounded-lg focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-green-500"
+            placeholder="Price..." min="1" />
+        <!-- validate show -->
+        <div *ngIf="
+        productForm.get('price')?.hasError('required') &&
+        (productForm.get('price')?.dirty ||
+          productForm.get('price')?.touched ||
+          submitted)
+      " class="text-red-500 text-xs mt-1">
+            Price is required.
+        </div>
+    </div>
+    <!-- quantity  -->
+    <div class="mb-6">
+        <label for="success" class="block mb-2 text-sm font-medium dark:text-green-500">
+            Quantity</label>
+        <input type="number" id="success" formControlName="quantity"
+            class="bg-green-50 border text-green-900 dark:text-green-400 dark:placeholder-green-500 text-sm rounded-lg focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-green-500"
+            placeholder="Quantity..." min="1" />
+        <!-- validate show -->
+        <div *ngIf="
+        productForm.get('quantity')?.hasError('required') &&
+        (productForm.get(' quantity')?.dirty ||
+          productForm.get(' quantity')?.touched ||
+          submitted)
+      " class="text-red-500 text-xs mt-1">
+            Quantity is required.
+        </div>
+    </div>
+    <!-- hot sale  -->
+    <div class="mb-6">
+        <label for="success" class="block mb-2 text-sm font-medium dark:text-green-500">
+            Hot Sale</label>
+        <input type="number" id="success" formControlName="sale_offer"
+            class="bg-green-50 border text-green-900 dark:text-green-400 dark:placeholder-green-500 text-sm rounded-lg focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-green-500"
+            placeholder="Hot sale..." />
+    </div>
+    <!-- desc  -->
+    <div class="mb-6">
+        <label for="success" class="block mb-2 text-sm font-medium dark:text-green-500">
+            Description</label>
+        <textarea rows="5" cols="30" pInputTextarea formControlName="desc" class="w-full"></textarea>
+        <!-- validate show -->
+        <div *ngIf="
+        productForm.get('desc')?.hasError('required') &&
+        (productForm.get('desc')?.dirty ||
+          productForm.get('desc')?.touched ||
+          submitted)
+      " class="text-red-500 text-xs mt-1">
+            Description is required.
+        </div>
+    </div>
+    <!-- rating  -->
+
+    <!-- color  -->
+
+    <!-- size  -->
+
+    <!-- category  -->
+    <div class="mb-6">
+        <label for="success" class="block mb-2 text-sm font-medium dark:text-green-500">
+            Category</label>
+        <select id="countries" formControlName="categoryId"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option selected disabled>Choose a Category</option>
+            <option *ngFor="let category of categorys" [value]="category._id">
+                {{ category.name }}
+            </option>
+        </select>
+        <!-- validate show -->
+        <div *ngIf="
+        productForm.get('categoryId')?.hasError('required') &&
+        (productForm.get('categoryId')?.dirty ||
+          productForm.get('categoryId')?.touched ||
+          submitted)
+      " class="text-red-500 text-xs mt-1">
+            Category is required.
+        </div>
+    </div>
+    <button type="submit"
+        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+        Add Product
+    </button>
+</form>

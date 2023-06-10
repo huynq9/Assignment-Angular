@@ -18,9 +18,15 @@ export class ProductsService {
       'http://localhost:9999/api/products/' + id
     );
   }
-  addproduct(product: any): Observable<IFormProduct> {
-    return this.http.post<IFormProduct>(
-      'http://localhost:9999/api/products',
+  addproduct(product: any): Observable<any> {
+    return this.http.post<any>('http://localhost:9999/api/products', product);
+  }
+  removeProduct(id: any): Observable<any> {
+    return this.http.delete<any>('http://localhost:9999/api/products/' + id);
+  }
+  editProduct(id: number | string, product: IProduct): Observable<IProduct> {
+    return this.http.put<IProduct>(
+      'http://localhost:9999/api/products/' + id,
       product
     );
   }

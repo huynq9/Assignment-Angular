@@ -5,8 +5,9 @@ export interface IProduct {
   price_sale: number;
   sale_offer: number;
   desc: string;
+  image: Array<string>;
   isNew: boolean;
-  isInvistable: boolean;
+  isInvisible: boolean;
   isFavorited: boolean;
   categoryId: string;
   quantity: number;
