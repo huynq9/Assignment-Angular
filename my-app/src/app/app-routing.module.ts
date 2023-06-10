@@ -22,7 +22,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'cart', component: CartComponent },
       { path: 'categories', component: CateComponent },
-      { path: 'product-detail', component: ProductDetailComponent },
+      { path: 'product-detail/:id', component: ProductDetailComponent },
       { path: 'check-out', component: CheckoutComponent },
     ],
   },
@@ -44,4 +44,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
