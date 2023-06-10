@@ -3,6 +3,7 @@ import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/client/home/home.component';
 import { LayOutClientComponent } from './layouts/client/lay-out-client/lay-out-client.component';
+
 import { CartComponent } from './pages/client/cart/cart.component';
 import { SignInComponent } from './pages/client/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/client/sign-up/sign-up.component';
@@ -12,6 +13,7 @@ import { AddComponent } from './pages/admin/add/add.component';
 import { ProductDetailComponent } from './pages/client/product-detail/product-detail.component';
 import { NotFoundComponent } from './pages/client/not-found/not-found.component';
 import { CheckoutComponent } from './pages/client/checkout/checkout.component';
+
 
 const routes: Routes = [
   {
@@ -24,6 +26,7 @@ const routes: Routes = [
       { path: 'categories', component: CateComponent },
       { path: 'product-detail', component: ProductDetailComponent },
       { path: 'check-out', component: CheckoutComponent },
+
     ],
   },
   {
@@ -35,13 +38,13 @@ const routes: Routes = [
       { path: 'add', component: AddComponent },
     ],
   },
-  { path: 'sign-in', component: SignInComponent },
-  { path: 'sign-up', component: SignUpComponent },
+ { path:'signup', component: SignUpComponent},
+  { path:'signin', component: SignInComponent},
   { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+exports: [RouterModule],
 })
 export class AppRoutingModule {}
