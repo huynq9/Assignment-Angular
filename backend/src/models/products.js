@@ -18,6 +18,7 @@ const productSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    image: Array,
     desc: {
       type: String,
     },
@@ -40,6 +41,10 @@ const productSchema = new mongoose.Schema(
       type: String,
       ref: "Categories",
     },
+    inventoryStatus: {
+      type: String,
+      enum: ["INSTOCK", "LOWSTOCK", "OUTOFSTOCK"],
+    },
   },
   { timestamps: true, versionKey: false }
 );
@@ -55,6 +60,16 @@ productSchema.pre("findOneAndUpdate", function (next) {
   if (sale_offer || price) {
     const price_sale = price * (1 - sale_offer / 100);
     this.setUpdate({ ...this.getUpdate(), price_sale });
+  }
+  switch (true) {
+    case this.quantity <= 0:
+      this.inventoryStatus = "OUTOFSTOCK";
+      break;
+    case this.quantity <= 10:
+      this.inventoryStatus = "LOWSTOCK";
+      break;
+    default:
+      this.inventoryStatus = "INSTOCK";
   }
   next();
 });

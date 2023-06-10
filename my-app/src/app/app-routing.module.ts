@@ -13,7 +13,7 @@ import { AddComponent } from './pages/admin/add/add.component';
 import { ProductDetailComponent } from './pages/client/product-detail/product-detail.component';
 import { NotFoundComponent } from './pages/client/not-found/not-found.component';
 import { CheckoutComponent } from './pages/client/checkout/checkout.component';
-
+import { EditComponent } from './pages/admin/edit/edit.component';
 
 const routes: Routes = [
   {
@@ -26,7 +26,6 @@ const routes: Routes = [
       { path: 'categories', component: CateComponent },
       { path: 'product-detail', component: ProductDetailComponent },
       { path: 'check-out', component: CheckoutComponent },
-
     ],
   },
   {
@@ -36,15 +35,16 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'add', component: AddComponent },
+      { path: 'edit/:id', component: EditComponent },
     ],
   },
- { path:'signup', component: SignUpComponent},
-  { path:'signin', component: SignInComponent},
+  { path: 'signup', component: SignUpComponent },
+  { path: 'signin', component: SignInComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-exports: [RouterModule],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
