@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
 
+import Product from "./products";
 export const categorySchema = new mongoose.Schema(
   {
     name: String,
     imgUrl: String,
-    products: [{ type: mongoose.Types.ObjectId, ref: "Product" }],
+    products: [{ type: String, ref: "Product" }],
   },
   { timestamp: true, versionKey: false }
 );
