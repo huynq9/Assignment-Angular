@@ -24,7 +24,7 @@ export const get = async (req, res) => {
 
 export const create = async (req, res) => {
   try {
-    const product = Product.create(req.body);
+    const product = await Product.create(req.body);
     if (!product) {
       return res.status(404).json({ message: "can't create product" });
     }
@@ -35,7 +35,7 @@ export const create = async (req, res) => {
     });
     return res.status(200).json({
       message: "create sucessfull",
-      product,
+      data: product,
     });
   } catch (error) {
     return res.status(500).json({ message: error });
@@ -61,6 +61,7 @@ export const update = async (req, res) => {
     });
   }
 };
+
 export const remove = async (req, res) => {
   try {
     await Product.findOneAndDelete({ _id: req.params.id });
