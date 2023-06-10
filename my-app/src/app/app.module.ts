@@ -24,7 +24,8 @@ import { CheckoutComponent } from './pages/client/checkout/checkout.component';
 import { SignInComponent } from './pages/client/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/client/sign-up/sign-up.component';
 import { ProductDetailComponent } from './pages/client/product-detail/product-detail.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -38,7 +39,10 @@ import { ProductDetailComponent } from './pages/client/product-detail/product-de
     CardCategoryComponent,
     DashboardComponent,
     AddComponent,
-    NavadminComponent
+    NavadminComponent,
+    SignUpComponent,
+    SignInComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +52,10 @@ import { ProductDetailComponent } from './pages/client/product-detail/product-de
     RippleModule,
     ButtonModule,
     DropdownModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    HttpClientModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent],

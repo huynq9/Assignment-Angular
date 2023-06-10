@@ -1,24 +1,33 @@
 {
-  "posts": [
+  "signup": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "fname": "Manoj",
+      "lname": "Adhikari",
+      "email": "manojadhikari@gmail.com",
+      "phone": "234324234",
+      "password": "asdasdf",
+      "id": 1
+    },
+    {
+      "fname": "shivam",
+      "lname": "adhikari",
+      "email": "shivamadhikari@gmail.com",
+      "phone": "32432",
+      "password": "asdf",
+      "id": 2
+    },
+    {
+      "fname": "dao",
+      "lname": "an",
+      "email": "anddph23131@fpt.edu.vn",
+      "phone": "0963129752",
+      "password": "123456789",
+      "id": 3
     }
   ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  },
   "products": [
     {
-      "id": "1000",
+      "id": "1",
       "code": "f230fh0g3",
       "name": "Bamboo Watch",
       "description": "Product Description",
