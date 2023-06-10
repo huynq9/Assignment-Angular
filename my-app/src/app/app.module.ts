@@ -31,7 +31,9 @@ import { NotFoundComponent } from './pages/client/not-found/not-found.component'
 import { HttpClientModule } from '@angular/common/http';
 import { EditComponent } from './pages/admin/edit/edit.component';
 import { ToastModule } from 'primeng/toast';
-
+import { CarouselComponent } from './pages/client/home/carousel/carousel.component';
+import { ImageModule } from 'primeng/image';
+import { TagModule } from 'primeng/tag';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +54,8 @@ import { ToastModule } from 'primeng/toast';
     NotFoundComponent,
     EditComponent,
 
+    CarouselComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -68,6 +72,11 @@ import { ToastModule } from 'primeng/toast';
     FormsModule,
     HttpClientModule,
     ToastModule,
+
+    ImageModule,
+    TagModule,
+
+
 
   ],
   providers: [],

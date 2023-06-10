@@ -2,15 +2,9 @@
 
 <h1
     class="text-4xl font-bold mx-auto h-16 max-w-screen-2xl items-center text-black justify-between sm:px-6 lg:px-8 mt-10 mb-5">
-    Still Interested?</h1>
-<div class="flex justify-between ">
-    <app-card-product></app-card-product>
-    <app-card-product></app-card-product>
-    <app-card-product></app-card-product>
-    <app-card-product></app-card-product>
-    <app-card-product></app-card-product>
-</div>
-
+    New Arirrvals</h1>
+<p-toast></p-toast>
+<app-carousel [products]="products" (handleClickEvent)="onCarouselClick($event)"></app-carousel>
 
 <section class="mx-auto  max-w-screen-2xl items-center text-black justify-between sm:px-6 lg:px-8 my-20">
     <div class="flex gap-3">

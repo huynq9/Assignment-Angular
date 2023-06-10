@@ -21,6 +21,9 @@ const productSchema = new mongoose.Schema(
     desc: {
       type: String,
     },
+    quantity: {
+      type: Number,
+    },
     isFavorited: {
       type: Boolean,
       default: false,
