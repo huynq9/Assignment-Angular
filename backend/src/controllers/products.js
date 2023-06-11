@@ -12,7 +12,7 @@ export const get = async (req, res) => {
       }
       return res.status(200).json({ message: "product found", product });
     }
-    const products = await Product.find({});
+    const products = await Product.find({}).populate("categoryId", "name");
     if (products.length === 0) {
       return res.status(404).json({ message: "products not found" });
     }

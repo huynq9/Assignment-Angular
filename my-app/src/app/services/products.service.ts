@@ -13,10 +13,8 @@ export class ProductsService {
       'http://localhost:9999/api/products'
     );
   }
-  getproduct(id: string): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(
-      'http://localhost:9999/api/products/' + id
-    );
+  getproduct(id: string): Observable<IProduct> {
+    return this.http.get<IProduct>('http://localhost:9999/api/products/' + id);
   }
   addproduct(product: any): Observable<any> {
     return this.http.post<any>('http://localhost:9999/api/products', product);
@@ -36,6 +34,19 @@ export class ProductsService {
   ): Observable<any> {
     const url = `http://localhost:9999/api/products/${productId}`;
     const payload = { isFavorited: isFavorited };
+    return this.http.patch(url, payload);
+  }
+  updateProductInvisible(
+    productId: any,
+    isInvisible: boolean
+  ): Observable<any> {
+    const url = `http://localhost:9999/api/products/${productId}`;
+    const payload = { isInvisible: isInvisible };
+    return this.http.patch(url, payload);
+  }
+  updateProductNew(productId: any, isNew: boolean): Observable<any> {
+    const url = `http://localhost:9999/api/products/${productId}`;
+    const payload = { isNew: isNew };
     return this.http.patch(url, payload);
   }
 }

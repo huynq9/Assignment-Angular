@@ -43,6 +43,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { FileUploadModule } from 'primeng/fileupload';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { Cloudinary } from 'cloudinary-core';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 const cloudinaryConfiguration = {
   cloud_name: 'YOUR_CLOUD_NAME',
@@ -98,6 +99,7 @@ const cloudinary = {
     DropdownModule,
     FileUploadModule,
     NgxDropzoneModule,
+    InputSwitchModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
