@@ -11,7 +11,12 @@
         <ng-template let-product pTemplate="item">
             <div class="group block overflow-hidden">
                 <div class="relative border-1 surface-border border-round m-2 text-center py-56 px-3 p-button-danger">
+
                     <p-tag value="New" class="absolute top-2 left-2 z-10"></p-tag>
+
+
+
+
                     <button class="pi  absolute top-2 right-2 z-10" *ngIf="product"
                         [class.pi-heart-fill]="product.isFavorited === true"
                         [class.pi-heart]="product.isFavorited === false" (click)="onCarouselClick(product)"></button>
@@ -19,10 +24,15 @@
                             class="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0" />
                         <img src="{{product.image[1]}}" alt=""
                             class="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100" /></a>
-
-                    <div
+                    <div *ngIf="product.price_sale === product.price"
                         class="absolute bottom-0 left-0 bg-white text-black px-2 py-1 text-xs transform transition-transform duration-300 group-hover:-translate-y-2">
                         {{ product.price | currency: 'USD': 'symbol': '1.0-0' }}
+                    </div>
+                    <div *ngIf="product.price_sale !== product.price"
+                        class="absolute bottom-0 left-0 bg-white text-black px-2 py-1 text-xs transform transition-transform duration-300 group-hover:-translate-y-2">
+                        <span class="text-xl font-bold">{{ product.price_sale | currency: 'USD': 'symbol': '1.0-0'
+                            }}</span>
+                        <span class="line-through">{{ product.price | currency: 'USD': 'symbol': '1.0-0' }}</span>
                     </div>
                 </div>
                 <div class="relative bg-white pt-3">
@@ -40,13 +50,123 @@
 
 <section class="mx-auto  max-w-screen-2xl items-center text-black justify-between sm:px-6 lg:px-8 my-20">
     <div class="flex gap-3">
-        <app-card-category></app-card-category>
-        <app-card-category></app-card-category>
-        <app-card-category></app-card-category>
-        <app-card-category></app-card-category>
-        <button (click)="show()" class="text-red-500">cc</button>
+        <div class="flex gap-3" *ngFor="let cate of categories">
+            <a href="#" class="group relative block  bg-black">
+                <img alt="Developer" src="{{cate.imgUrl}}"
+                    class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50" />
+
+                <div class="relative p-4 sm:p-6 lg:p-8">
+                    <p class="text-sm font-medium uppercase tracking-widest text-pink-500">
+                        Categories
+                    </p>
+
+                    <p class="text-xl font-bold text-white sm:text-2xl">{{cate.name}}</p>
+
+                    <div class="mt-8 sm:mt-16 lg:mt-32">
+                        <div
+                            class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+                            <p class="text-sm text-white">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
+                                perferendis hic asperiores quibusdam quidem voluptates doloremque
+                                reiciendis nostrum harum. Repudiandae?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <a href="#" class="group relative block  bg-black">
+            <img alt="Developer"
+                src="https://sport360.com/wp-content/uploads/2020/02/BeFunky-collage-2020-02-06T144727.730.jpg"
+                class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50" />
+
+            <div class="relative p-4 sm:p-6 lg:p-8">
+                <p class="text-sm font-medium uppercase tracking-widest text-pink-500">
+                    PRODUCTS
+                </p>
+
+                <p class="text-xl font-bold text-white sm:text-2xl">NEW</p>
+
+                <div class="mt-8 sm:mt-16 lg:mt-32">
+                    <div
+                        class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+                        <p class="text-sm text-white">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
+                            perferendis hic asperiores quibusdam quidem voluptates doloremque
+                            reiciendis nostrum harum. Repudiandae?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="#" class="group relative block  bg-black">
+            <img alt="Developer"
+                src="https://www.themanual.com/wp-content/uploads/sites/9/2020/08/adidas.jpg?fit=800%2C533&p=1"
+                class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50" />
+
+            <div class="relative p-4 sm:p-6 lg:p-8">
+                <p class="text-sm font-medium uppercase tracking-widest text-pink-500">
+                    PRODUCTS
+                </p>
+
+                <p class="text-xl font-bold text-white sm:text-2xl">SALE</p>
+
+                <div class="mt-8 sm:mt-16 lg:mt-32">
+                    <div
+                        class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+                        <p class="text-sm text-white">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
+                            perferendis hic asperiores quibusdam quidem voluptates doloremque
+                            reiciendis nostrum harum. Repudiandae?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </a>
+
     </div>
 </section>
+<h1
+    class="text-4xl font-bold mx-auto h-16 max-w-screen-2xl items-center text-black justify-between sm:px-6 lg:px-8 mt-10 mb-5">
+    Sale Collections</h1>
+<div class="card">
+    <p-carousel [value]="productSale" [numVisible]="5" [numScroll]="3" [circular]="true"
+        [responsiveOptions]="responsiveOptions" autoPlayInterval="3000">
+        <ng-template let-product pTemplate="item">
+            <div class="group block overflow-hidden">
+                <div class="relative border-1 surface-border border-round m-2 text-center py-56 px-3 p-button-danger">
+
+                    <button class="pi  absolute top-2 right-2 z-10" *ngIf="product"
+                        [class.pi-heart-fill]="product.isFavorited === true"
+                        [class.pi-heart]="product.isFavorited === false" (click)="onCarouselClick(product)"></button>
+                    <a routerLink="/product-detail/{{product._id}}"><img src="{{product.image[0]}}" alt=""
+                            class="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0" />
+                        <img src="{{product.image[1]}}" alt=""
+                            class="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100" /></a>
+                    <span *ngIf="product.sale_offer"
+                        class="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">{{
+                        product.sale_offer }}% OFF</span>
+                    <div class="absolute bottom-0 left-0 group">
+                        <div
+                            class="bg-white text-black px-2 py-1 text-xs transform transition-transform duration-300 group-hover:-translate-y-2">
+                            <span class="text-xl font-bold">{{ product.price_sale | currency: 'USD': 'symbol': '1.0-0'
+                                }}</span>
+                            <span class="line-through">{{ product.price | currency: 'USD': 'symbol': '1.0-0' }}</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="relative bg-white pt-3">
+                    <h3 class="text-sm text-gray-700 ml-2 group-hover:underline group-hover:underline-offset-4">
+                        {{ product.name }}
+                    </h3>
+                </div>
+            </div>
+
+        </ng-template>
+    </p-carousel>
+</div>
 <section class=" mx-auto  max-w-screen items-center bg-[#f5f5e5] text-black justify-between  lg:px-8  ">
     <div class="mx-auto  max-w-screen-2xl items-center text-black justify-between sm:px-6 lg:px-8  flex gap-24 pb-10">
         <div>

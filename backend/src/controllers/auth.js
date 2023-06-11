@@ -5,14 +5,14 @@ import { signinSchema, signupSchema } from "../schemas/auth";
 export const signup = async (req, res) => {
   try {
     // validate đầu vào
-    // const { error } = signupSchema.validate(req.body, { abortEarly: false });
-    // if (error) {
-    //   const errors = error.details.map((err) => err.message);
+    const { error } = signupSchema.validate(req.body, { abortEarly: false });
+    if (error) {
+      const errors = error.details.map((err) => err.message);
 
-    //   return res.status(400).json({
-    //     messages: errors,
-    //   });
-    // }
+      return res.status(400).json({
+        messages: errors,
+      });
+    }
     // Kiểm tra trong db có tk không?
     const userExist = await User.findOne({ email: req.body.email });
     if (userExist) {
@@ -49,14 +49,14 @@ export const signup = async (req, res) => {
 
 export const signin = async (req, res) => {
   try {
-    // const { error } = signinSchema.validate(req.body, { abortEarly: false });
-    // if (error) {
-    //   const errors = error.details.map((err) => err.message);
+    const { error } = signinSchema.validate(req.body, { abortEarly: false });
+    if (error) {
+      const errors = error.details.map((err) => err.message);
 
-    //   return res.status(400).json({
-    //     messages: errors,
-    //   });
-    // }
+      return res.status(400).json({
+        messages: errors,
+      });
+    }
 
     const user = await User.findOne({ email: req.body.email });
     if (!user) {

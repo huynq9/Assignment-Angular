@@ -3,6 +3,7 @@ import cors from "cors";
 import routerProducts from "./src/routes/products";
 import routerColor from "./src/routes/colors";
 import routerSize from "./src/routes/sizes";
+
 import routerCategories from "./src/routes/categories";
 import mongoose from "mongoose";
 

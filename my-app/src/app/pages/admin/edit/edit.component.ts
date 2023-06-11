@@ -87,39 +87,52 @@ export class EditComponent {
     console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
   }
-  uploadFile() {
-    if (this.files.length === 0) {
-      alert('Vui lòng chọn các tệp ảnh');
-      return;
-    }
-    this.showProgressBar = true;
-
-    const uploadPromises: Promise<any>[] = [];
-
-    for (const file of this.files) {
-      const data = new FormData();
-      data.append('file', file);
-      data.append('upload_preset', 'uploadCellphones');
-      data.append('cloud_name', 'dwb9qumu6');
-
-      const uploadPromise = this.cloudinaryUpload.uploadImage(data).toPromise();
-      uploadPromises.push(uploadPromise);
-    }
-
-    Promise.all(uploadPromises)
-      .then((results) => {
-        this.imageUrls = results.map((result) => result.secure_url);
-        console.log('imageUrls', this.imageUrls);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  onSubmit() {
+    this.uploadFile().then(() => {
+      this.onHandleSubmit();
+    });
   }
+
+  uploadFile(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      if (this.files.length === 0) {
+        alert('Vui lòng chọn các tệp ảnh');
+        resolve();
+        return;
+      }
+      this.showProgressBar = true;
+
+      const uploadPromises: Promise<any>[] = [];
+
+      for (const file of this.files) {
+        const data = new FormData();
+        data.append('file', file);
+        data.append('upload_preset', 'uploadCellphones');
+        data.append('cloud_name', 'dwb9qumu6');
+
+        const uploadPromise = this.cloudinaryUpload
+          .uploadImage(data)
+          .toPromise();
+        uploadPromises.push(uploadPromise);
+      }
+
+      Promise.all(uploadPromises)
+        .then((results) => {
+          this.imageUrls = results.map((result) => result.secure_url);
+          console.log('imageUrls', this.imageUrls);
+          resolve();
+        })
+        .catch((error) => {
+          console.log(error);
+          reject(error);
+        });
+    });
+  }
+
   onHandleSubmit() {
     this.submitted = true;
     const formData = { ...this.productForm.value };
     // Tùy chỉnh giá trị trong formData
-
     formData.image = this.imageUrls;
     if (this.productForm.valid) {
       console.log(formData);
@@ -127,7 +140,7 @@ export class EditComponent {
       this.productService.editProduct(this.id, formData).subscribe(
         (response) => {
           // Xử lý phản hồi từ API khi đăng ký thành công
-          this.router.navigate(['/admin/products']);
+          this.router.navigate(['/admin/dashboard']);
           console.log('Sửa Thành công', response);
         },
         (error) => {

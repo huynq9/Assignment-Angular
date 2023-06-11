@@ -1,0 +1,89 @@
+<div class="flex justify-end mb-4">
+    <button (click)="toggleLayout()" class="px-4 py-2 mt-7 mr-7 text-sm rounded bg-black text-white hover:bg-slate-900">
+        {{ isGrid ? 'List' : 'Grid' }}
+    </button>
+</div>
+
+<div class="flex">
+    <div class="w-1/4 pr-4">
+        <!-- Mã HTML cho bảng điều khiển lọc sản phẩm -->
+        <!-- Ví dụ: danh sách các lựa chọn lọc -->
+
+
+    </div>
+    <div class="w-3/4 mb-20">
+        <div *ngIf="isGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <!-- Mã HTML cho giao diện dạng lưới -->
+            <div *ngFor="let product of products" class="group block overflow-hidden">
+                <div class="relative border-1 surface-border border-round m-2 text-center py-56 px-3 p-button-danger">
+                    <div class="absolute top-1 left-2 z-10 flex flex-col">
+                        <span *ngIf="product.sale_offer"
+                            class="  m-1 rounded-full bg-black px-2 text-center text-sm font-medium text-white">
+                            {{ product.sale_offer }}% OFF
+                        </span>
+                        <p-tag value="New" *ngIf="product.isNew === true" class=" top-2 left-0 z-10"></p-tag>
+
+                    </div>
+
+
+                    <button class="pi absolute top-2 right-2 z-10" *ngIf="product"
+                        [class.pi-heart-fill]="product.isFavorited === true"
+                        [class.pi-heart]="product.isFavorited === false" (click)="onCarouselClick(product)"></button>
+                    <a routerLink="/product-detail/{{product._id}}">
+                        <img src="{{product.image[0]}}" alt=""
+                            class="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0" />
+                        <img src="{{product.image[1]}}" alt=""
+                            class="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100" />
+                    </a>
+                    <div *ngIf="product.price_sale === product.price"
+                        class="absolute bottom-0 left-0 bg-white text-black px-2 py-1 text-xs transform transition-transform duration-300 group-hover:-translate-y-2">
+                        {{ product.price | currency: 'USD': 'symbol': '1.0-0' }}
+                    </div>
+                    <div *ngIf="product.price_sale !== product.price"
+                        class="absolute bottom-0 left-0 bg-white text-black px-2 py-1 text-xs transform transition-transform duration-300 group-hover:-translate-y-2">
+                        <span class="text-xl font-bold">{{ product.price_sale | currency: 'USD': 'symbol': '1.0-0'
+                            }}</span>
+                        <span class="line-through">{{ product.price | currency: 'USD': 'symbol': '1.0-0' }}</span>
+                    </div>
+                </div>
+                <div class="relative bg-white pt-3">
+                    <h3 class="text-sm text-gray-700 ml-2 group-hover:underline group-hover:underline-offset-4">
+                        {{ product.name }}
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!isGrid">
+            <div class="group block overflow-hidden" *ngFor="let product of products">
+
+                <div class="flex items-center p-2">
+                    <a routerLink="/product-detail/{{product._id}}" class="mr-8">
+                        <div class="image-container">
+                            <img src="{{product.image[0]}}" alt="" class="h-32 w-32 object-cover">
+                        </div>
+                    </a>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-2">
+                            <a routerLink="/product-detail/{{product._id}}">{{ product.name }}</a>
+                        </h3>
+                        <div *ngIf="product.price_sale === product.price" class="text-gray-600">
+                            {{ product.price | currency: 'USD': 'symbol': '1.0-0' }}
+                        </div>
+                        <div *ngIf="product.price_sale !== product.price" class="text-gray-600">
+                            <span class="text-xl font-bold">{{ product.price_sale | currency: 'USD': 'symbol': '1.0-0'
+                                }}</span>
+                            <span class="line-through">{{ product.price | currency: 'USD': 'symbol': '1.0-0' }}</span>
+                        </div>
+                        <p-tag value="New" *ngIf="product.isNew" class="ml-auto"></p-tag>
+                        <span *ngIf="product.sale_offer"
+                            class=" top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">
+                            {{ product.sale_offer }}% OFF
+                        </span>
+                    </div>
+                    <button class="favorite-button my-auto ml-auto mr-24 text-2xl" (click)="toggleFavorite(product)">
+                        <i class="pi pi-heart" *ngIf="!product.isFavorited" style="font-size: 25px;"></i>
+                        <i class="pi pi-heart-fill" *ngIf="product.isFavorited" style="font-size: 25px;"></i>
+                    </button>
+                </div>
+            </div>
+        </div>

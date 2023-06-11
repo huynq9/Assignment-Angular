@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { GalleriaModule } from 'primeng/galleria';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { RippleModule } from 'primeng/ripple';
 import { HeaderComponent } from './components/client/header/header.component';
@@ -44,6 +44,8 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { Cloudinary } from 'cloudinary-core';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { ShopcolectionComponent } from './pages/client/shopcolection/shopcolection.component';
+import { AppRoutingModule } from './app-routing.module';
 
 const cloudinaryConfiguration = {
   cloud_name: 'YOUR_CLOUD_NAME',
@@ -73,6 +75,7 @@ const cloudinary = {
     LayOutAdminComponent,
     NotFoundComponent,
     EditComponent,
+    ShopcolectionComponent,
   ],
   imports: [
     BrowserModule,
