@@ -1,21 +1,18 @@
 <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
   <div class="mx-auto max-w-lg text-center">
-    <h1 class="text-2xl font-bold sm:text-3xl">Sign In</h1>
-
+    <h1 class="text-2xl font-bold sm:text-3xl">Sign up</h1>
     <p class="mt-4 text-gray-500"></p>
   </div>
 
-  <form action="" class="mx-auto mb-0 mt-8 max-w-md space-y-4" [formGroup]="signinForm" (ngSubmit)="signin()">
+  <form action="" class="mx-auto mb-0 mt-8 max-w-md space-y-4" [formGroup]="formSignin" (ngSubmit)="onHandleSubmit()">
+
+
+
     <div>
-      <label for="email" class="sr-only">Email</label>
-
+      <label for=" email" class="sr-only">Email</label>
       <div class="relative">
-        <input type="email" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-
-          placeholder="Enter email" formControlName="email" />
-
-
-
+        <input type="email" formControlName="email"
+          class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm" placeholder="Enter email" />
         <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
@@ -25,15 +22,11 @@
         </span>
       </div>
     </div>
-
     <div>
       <label for="password" class="sr-only">Password</label>
-
       <div class="relative">
-        <input type="password" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-
-          placeholder="Enter password" formControlName="password" />
-
+        <input type="password" formControlName="password"
+          class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm" placeholder="Enter password" />
         <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
@@ -43,18 +36,27 @@
               d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
           </svg>
         </span>
+        <div *ngIf="
+            formSignin.get('password')?.hasError('required') &&
+            (formSignin.get('password')?.touched ||
+                formSignin.get('password')?.dirty)
+        ">
+          Password is required
+        </div>
       </div>
     </div>
 
-    <div class="flex items-center justify-between">
-      <p class="text-sm text-gray-500">
-        No account?
-        <a class="underline">Sign up</a>
-      </p>
 
+    <div class="flex items-center justify-between">
       <button type="submit" class="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white">
-        Sign in
+        Sign up
       </button>
+      <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+        Already have an account?
+
+        <a class="font-medium text-primary-600 hover:underline dark:text-primary-500" routerLink="signup">Sign up</a>
+      </p>
     </div>
   </form>
+
 </div>
