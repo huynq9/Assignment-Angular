@@ -1,6 +1,12 @@
 <div class="flex justify-end mb-4">
-    <button (click)="toggleLayout()" class="px-4 py-2 mt-7 mr-7 text-sm rounded bg-black text-white hover:bg-slate-900">
-        {{ isGrid ? 'List' : 'Grid' }}
+    <button (click)="toggleLayout()" class="px-4 py-2 mt-7 mr-7 text-sm rounded border  text-black ">
+        <ng-container *ngIf="isGrid; else newText">
+            <i class="pi pi-list" style="font-size: 1rem"></i>
+        </ng-container>
+        <ng-template #newText>
+            <i class="pi pi-microsoft" style="font-size: 1rem"></i>
+
+        </ng-template>
     </button>
 </div>
 
@@ -8,6 +14,7 @@
     <div class="w-1/4 pr-4">
         <!-- Mã HTML cho bảng điều khiển lọc sản phẩm -->
         <!-- Ví dụ: danh sách các lựa chọn lọc -->
+
 
 
     </div>
