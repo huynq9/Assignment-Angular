@@ -1,6 +1,7 @@
-<th class="text-5xl my-3">Add Product</th>
+<!-- <th class="text-5xl my-3">Add Product</th> -->
 
 <!-- image -->
+<p-toast></p-toast>
 <div class="mb-6">
     <label for="success" class="block mb-2 text-sm font-medium dark:text-green-500">Image</label>
     <ngx-dropzone (change)="onSelect($event)">
@@ -11,10 +12,10 @@
         </ngx-dropzone-image-preview>
     </ngx-dropzone>
 
-    <button (click)="uploadFile()" pButton pRipple label="Upload image" class="p-button-success custom_style"></button>
+
 </div>
 
-<form [formGroup]="productForm" (ngSubmit)="onHandleSubmit()">
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
     <!-- name  -->
     <div class="mb-6">
         <label for="success" class="block mb-2 text-sm font-medium dark:text-green-500">

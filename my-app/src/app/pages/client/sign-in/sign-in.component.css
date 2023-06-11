@@ -1,0 +1,24 @@
+.instagram-logo {
+  background-position: 0 -130px;
+  height: 51px;
+  width: 175px;
+  background-image: url(https://cdn-icons-png.flaticon.com/512/731/731962.png);
+}
+.facebook-logo {
+  background-position: -414px -259px;
+  background-image: url(https://bit.ly/3v2LT17);
+  height: 16px;
+  width: 16px;
+}
+.apple-store-logo {
+  background-position: -132px -182px;
+  height: 42px;
+  width: 128px;
+  background-image: url(https://bit.ly/3v2LT17);
+}
+.google-store-logo {
+  background-position: 0 -182px;
+  height: 42px;
+  width: 130px;
+  background-image: url(https://bit.ly/3v2LT17);
+}

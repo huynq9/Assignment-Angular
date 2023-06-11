@@ -32,6 +32,8 @@
                 <th pSortableColumn="name" style="min-width:15rem">Name <p-sortIcon field="name"></p-sortIcon></th>
                 <th>Image</th>
                 <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+                <th pSortableColumn="price">Price Sale<p-sortIcon field="price_sale"></p-sortIcon></th>
+                <th pSortableColumn="price">Sale<p-sortIcon field="sale_offer"></p-sortIcon></th>
                 <th pSortableColumn="category" style="min-width:10rem">Category <p-sortIcon
                         field="category"></p-sortIcon></th>
                 <th pSortableColumn="rating">New <p-sortIcon field="rating"></p-sortIcon></th>
@@ -49,6 +51,8 @@
                 <td><p-image src="{{product.image[0]}}" [alt]="product.name" width="50" class="shadow-4"
                         [preview]="true"></p-image></td>
                 <td>{{ product.price | currency: 'USD' }}</td>
+                <td>{{ product.price_sale | currency: 'USD' }}</td>
+                <td>{{ product.sale_offer | currency: '%' }}</td>
                 <td>{{ product.categoryId.name }}</td>
                 <td><p-inputSwitch [ngModel]="product.isNew" (onChange)="toggleNew(product)"></p-inputSwitch></td>
                 <td>

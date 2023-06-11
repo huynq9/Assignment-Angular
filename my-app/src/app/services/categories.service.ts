@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CategoriesService {
   constructor(private http: HttpClient) {}
-  getCategories(): Observable<{ categories: any }> {
+  getCategories(): Observable<{ categories: any[] }> {
     return this.http.get<any>('http://localhost:9999/api/categories');
   }
   getCategory(id: any): Observable<any> {

@@ -1,54 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { IProduct } from 'src/app/interfaces/products';
-import { CategoriesService } from 'src/app/services/categories.service';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-shopcolection',
+  templateUrl: './shopcolection.component.html',
+  styleUrls: ['./shopcolection.component.css'],
   providers: [MessageService],
 })
-export class HomeComponent implements OnInit {
-  productsNew!: IProduct[];
-  productSale: IProduct[] = [];
-  responsiveOptions!: any[];
-  categories!: any[];
+export class ShopcolectionComponent {
+  isGrid: boolean = true;
+  products: IProduct[] = [];
   constructor(
     private ps: ProductsService,
-    private messageService: MessageService,
-    private ct: CategoriesService
+    private messageService: MessageService
   ) {}
-
   ngOnInit() {
-    this.responsiveOptions = [
-      {
-        breakpoint: '1199px',
-        numVisible: 1,
-        numScroll: 1,
-      },
-      {
-        breakpoint: '991px',
-        numVisible: 2,
-        numScroll: 1,
-      },
-      {
-        breakpoint: '767px',
-        numVisible: 1,
-        numScroll: 1,
-      },
-    ];
-    this.ct
-      .getCategories()
-      .subscribe(({ categories }) => (this.categories = categories));
     this.ps.getproducts().subscribe(({ products }) => {
-      this.productSale = products.filter(
-        (product) => product.sale_offer > 0 && product.isInvisible === true
-      );
-      this.productsNew = products.filter(
-        (product) => product.isNew === true && product.isInvisible === true
-      );
+      this.products = products;
+      console.log(products);
     });
   }
   onCarouselClick(product: IProduct) {
@@ -98,14 +69,7 @@ export class HomeComponent implements OnInit {
       detail: 'Message Content',
     });
   }
-  // getSeverity(status: string) {
-  //   switch (status) {
-  //     case 'INSTOCK':
-  //       return 'success';
-  //     case 'LOWSTOCK':
-  //       return 'warning';
-  //     case 'OUTOFSTOCK':
-  //       return 'danger';
-  //   }
-  // }
+  toggleLayout() {
+    this.isGrid = !this.isGrid;
+  }
 }

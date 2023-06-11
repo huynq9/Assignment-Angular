@@ -1,4 +1,4 @@
-<th class="text-5xl my-3">Add Product</th>
+<!-- <th class="text-5xl my-3">Add Product</th> -->
 
 <!-- image -->
 <div class="mb-6">
@@ -12,10 +12,10 @@
     </ngx-dropzone>
     <p-progressBar class="custom_style" [value]="value"
         [style.display]="showProgressBar ? 'block' : 'none'"></p-progressBar>
-    <button (click)="uploadFile()" pButton pRipple label="Upload image" class="p-button-success custom_style"></button>
+
 </div>
 
-<form [formGroup]="productForm" (ngSubmit)="onHandleSubmit()">
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
     <!-- name  -->
     <div class="mb-6">
         <label for="success" class="block mb-2 text-sm font-medium dark:text-green-500">
