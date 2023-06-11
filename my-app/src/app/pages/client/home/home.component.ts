@@ -85,6 +85,13 @@ export class HomeComponent implements OnInit {
       detail: 'UnFavorited',
     });
   }
+  showSuccess() {
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success',
+      detail: 'Message Content',
+    });
+  }
   // getSeverity(status: string) {
   //   switch (status) {
   //     case 'INSTOCK':

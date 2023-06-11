@@ -9,33 +9,29 @@
     <p-carousel [value]="productsNew" [numVisible]="5" [numScroll]="3" [circular]="true"
         [responsiveOptions]="responsiveOptions" autoPlayInterval="3000">
         <ng-template let-product pTemplate="item">
-            <div class="group block overflow-hidden ">
-
-
+            <div class="group block overflow-hidden">
                 <div class="relative border-1 surface-border border-round m-2 text-center py-56 px-3 p-button-danger">
                     <p-tag value="New" class="absolute top-2 left-2 z-10"></p-tag>
-                    <button class="pi pi-heart-fill  absolute top-2 right-2 z-10" *ngIf="product"
-                        [class.text-red-500]="product.isFavorited === true"
-                        [class.text-white]="product.isFavorited === false" (click)="onCarouselClick(product)"></button>
-                    <img src="{{product.image[0]}}" alt=""
-                        class="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0" />
+                    <button class="pi  absolute top-2 right-2 z-10" *ngIf="product"
+                        [class.pi-heart-fill]="product.isFavorited === true"
+                        [class.pi-heart]="product.isFavorited === false" (click)="onCarouselClick(product)"></button>
+                    <a routerLink="/product-detail/{{product._id}}"><img src="{{product.image[0]}}" alt=""
+                            class="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0" />
+                        <img src="{{product.image[1]}}" alt=""
+                            class="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100" /></a>
 
-                    <img src="{{product.image[1]}}" alt=""
-                        class="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100" />
-                </div>
-
-                <div class="relative bg-white pt-3">
-                    <h3 class="text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4">
-                        {{product.name}}
-                    </h3>
-
-                    <div class="mt-1.5 flex items-center justify-between text-gray-900">
-                        <p class="tracking-wide">{{product.price}}</p>
-
-                        <p class="text-xs uppercase tracking-wide">6 Colors</p>
+                    <div
+                        class="absolute bottom-0 left-0 bg-white text-black px-2 py-1 text-xs transform transition-transform duration-300 group-hover:-translate-y-2">
+                        {{ product.price | currency: 'USD': 'symbol': '1.0-0' }}
                     </div>
                 </div>
+                <div class="relative bg-white pt-3">
+                    <h3 class="text-sm text-gray-700 ml-2 group-hover:underline group-hover:underline-offset-4">
+                        {{ product.name }}
+                    </h3>
+                </div>
             </div>
+
         </ng-template>
     </p-carousel>
 </div>

@@ -1,4 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { IProduct } from 'src/app/interfaces/products';
 import { CategoriesService } from 'src/app/services/categories.service';
@@ -19,7 +26,7 @@ export class DashboardComponent implements OnInit {
   selectedImages: File[] = [];
   previewUrls: string[] = [];
   product!: any;
-
+  checked!: boolean;
   selectedProduct!: any;
 
   submitted!: boolean;
@@ -31,13 +38,17 @@ export class DashboardComponent implements OnInit {
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
 
-    private ct: CategoriesService
+    private ct: CategoriesService,
+    private http: HttpClient
   ) {}
 
   ngOnInit() {
-    this.ps
-      .getproducts()
-      .subscribe(({ products }) => (this.products = products));
+    this.ps.getproducts().subscribe(({ products }) => {
+      this.products = products;
+      this.products.forEach((product) => {
+        product.isInvisible = product.isInvisible;
+      });
+    });
     this.statuses = [
       { label: 'INSTOCK', value: 'instock' },
       { label: 'LOWSTOCK', value: 'lowstock' },
@@ -154,6 +165,28 @@ export class DashboardComponent implements OnInit {
       id += chars.charAt(Math.floor(Math.random() * chars.length));
     }
     return id;
+  }
+  toggleInvisible(product: any) {
+    const productId = product._id;
+    const newFavoriteStatus = !product.isInvisible;
+
+    this.ps
+      .updateProductInvisible(productId, newFavoriteStatus)
+      .subscribe(() => {
+        // Cập nhật giá trị isFavorite trong sản phẩm sau khi cập nhật thành công trong cơ sở dữ liệu
+        product.isInvisitable = newFavoriteStatus;
+      });
+  }
+  toggleNew(product: any) {
+    const productId = product._id;
+    const newFavoriteStatus = !product.isNew;
+
+    this.ps
+      .updateProductNew(productId, newFavoriteStatus)
+      .subscribe(() => {
+        // Cập nhật giá trị isFavorite trong sản phẩm sau khi cập nhật thành công trong cơ sở dữ liệu
+        product.isNew = newFavoriteStatus;
+      });
   }
 
   // sadsadasdsad
