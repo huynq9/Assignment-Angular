@@ -1,19 +1,46 @@
+<!-- <form [formGroup]="formSignup" (ngSubmit)="onHandleSubmit()">
+  <input type="text" placeholder="Email" formControlName="email" />
+  <div *ngIf="
+      formSignup.get('email')?.hasError('required') &&
+      (formSignup.get('email')?.touched || formSignup.get('email')?.dirty)
+    ">
+    Email is Required
+  </div>
+  <div *ngIf="
+      formSignup.get('email')?.hasError('email') &&
+      (formSignup.get('email')?.touched || formSignup.get('email')?.dirty)
+    ">
+    Invalid email
+  </div>
+  <input type="password" placeholder="Password" formControlName="password" />
+  <div *ngIf="
+      formSignup.get('password')?.hasError('required') &&
+      (formSignup.get('password')?.touched || formSignup.get('email')?.dirty)
+    "></div>
+  <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" />
+  <div *ngIf="
+      formSignup.hasError('misMatch') &&
+      (formSignup.get('confirmPassword')?.touched ||
+        formSignup.get('confirmPassword')?.dirty)
+    ">
+    Password không trùng nhau
+  </div>
+  <button>Đăng ký</button>
+</form> -->
+
 <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
   <div class="mx-auto max-w-lg text-center">
     <h1 class="text-2xl font-bold sm:text-3xl">Sign up</h1>
-
     <p class="mt-4 text-gray-500"></p>
   </div>
 
-
-  <form action="" class="mx-auto mb-0 mt-8 max-w-md space-y-4" [formGroup]="singup" (ngSubmit)="signupdata(singup)">
+  <form action="" class="mx-auto mb-0 mt-8 max-w-md space-y-4" [formGroup]="formSignup" (ngSubmit)="onHandleSubmit()">
     <div>
-      <label for="fname" class="sr-only">Lastname</label>
+      <label for="name" class="sr-only">name</label>
 
       <div class="relative">
-        <input type="text" formControlName="fname" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-          placeholder="Enter lname" />
-
+        <input type="text" formControlName="name" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+          placeholder="Enter name" />
         <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
@@ -21,15 +48,26 @@
               d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
           </svg>
         </span>
+
+        <div *ngIf="
+        formSignup.get('name')?.hasError('required') &&
+        (formSignup.get('name')?.touched || formSignup.get('name')?.dirty)
+      ">
+          name is Required
+        </div>
+        <div *ngIf="
+        formSignup.get('name')?.hasError('name') &&
+        (formSignup.get('name')?.touched || formSignup.get('name')?.dirty)
+      ">
+          Invalid name
+        </div>
       </div>
     </div>
     <div>
-      <label for="lname" class="sr-only">Lastname</label>
-
+      <label for="phone" class="sr-only">Phone</label>
       <div class="relative">
-        <input type="text" formControlName="lname" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-          placeholder="Enter lname" />
-
+        <input type="number" formControlName="phone"
+          class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm" placeholder="Enter phone" />
         <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
@@ -37,33 +75,26 @@
               d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
           </svg>
         </span>
+        <div *ngIf="
+        formSignup.get('phone')?.hasError('required') &&
+        (formSignup.get('phone')?.touched || formSignup.get('phone')?.dirty)
+      ">
+          phone is Required
+        </div>
+        <div *ngIf="
+        formSignup.get('phone')?.hasError('phone') &&
+        (formSignup.get('phone')?.touched || formSignup.get('phone')?.dirty)
+      ">
+          Invalid phone
+        </div>
       </div>
     </div>
 
     <div>
-      <label for="phone" class="sr-only">Lastname</label>
-
-      <div class="relative">
-        <input type="text" formControlName="phone" class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-          placeholder="Enter phone" />
-
-        <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-          </svg>
-        </span>
-      </div>
-    </div>
-
- <div>
       <label for="email" class="sr-only">Email</label>
-
       <div class="relative">
         <input type="email" formControlName="email"
           class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm" placeholder="Enter email" />
-
         <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
@@ -71,16 +102,26 @@
               d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
           </svg>
         </span>
+
+        <div *ngIf="
+      formSignup.get('email')?.hasError('required') &&
+      (formSignup.get('email')?.touched || formSignup.get('email')?.dirty)
+    ">
+          Email is Required
+        </div>
+        <div *ngIf="
+      formSignup.get('email')?.hasError('email') &&
+      (formSignup.get('email')?.touched || formSignup.get('email')?.dirty)
+    ">
+          Invalid email
+        </div>
       </div>
     </div>
-
     <div>
       <label for="password" class="sr-only">Password</label>
-
       <div class="relative">
         <input type="password" formControlName="password"
           class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm" placeholder="Enter password" />
-
         <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
@@ -90,9 +131,36 @@
               d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
           </svg>
         </span>
+        <div *ngIf="
+      formSignup.get('password')?.hasError('required') &&
+      (formSignup.get('password')?.touched || formSignup.get('email')?.dirty)
+    "></div>
       </div>
     </div>
 
+    <div>
+      <label for="password" class="sr-only">confirmPassword</label>
+      <div class="relative">
+        <input type="confirmPassword" formControlName="confirmPassword"
+          class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm" placeholder="Enter password" />
+        <span class="absolute inset-y-0 end-0 grid place-content-center px-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+        </span>
+        <div *ngIf="
+        formSignup.hasError('misMatch') &&
+        (formSignup.get('confirmPassword')?.touched ||
+          formSignup.get('confirmPassword')?.dirty)
+      ">
+          Password không trùng nhau
+        </div>
+      </div>
+    </div>
     <div class="flex items-center justify-between">
       <button type="submit" class="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white">
         Sign up
@@ -100,11 +168,9 @@
       <p class="text-sm font-light text-gray-500 dark:text-gray-400">
         Already have an account?
 
-        <a class="font-medium text-primary-600 hover:underline dark:text-primary-500" routerLink="signin"
-          (click)="sbtn()">Login here</a>
+        <a class="font-medium text-primary-600 hover:underline dark:text-primary-500" routerLink="signin">Login here</a>
       </p>
     </div>
   </form>
-</div>
 
-<router-outlet></router-outlet>
+</div>

@@ -1,45 +1,42 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
-// import { ToastrService } from 'ngx-toastr';
-declare var $:any;
+
 @Component({
-  selector: 'app-sign-up',
+  selector: 'app-signup',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit{
-  constructor( private router:Router, private _http:HttpClient) { }
-  singup:FormGroup|any;
-  signuser:any;
-  ngOnInit(): void {
-    this.singup = new FormGroup({
-      'fname': new FormControl(),
-      'lname':new FormControl(),
-      'email':new FormControl(),
-      'phone':new FormControl(),
-      'password': new FormControl()
-    })
-  }
+export class SignUpComponent {
+  formSignup = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
+    name:['',[Validators.required]],
+    phone: ['', [Validators.required]],
+    confirmPassword: ['']
+  }, { validators: this.checkPassword })
 
-  signupdata(singup:FormGroup){
-    //console.log(this.singup.value);
-    this.signuser = this.singup.value.fname
-    this._http.post<any>("http://localhost:3000/signup", this.singup.value)
-    .subscribe(res=>{
-      alert('data added successfully');
-      this.singup.reset();
-      this.router.navigate(['signin'])
-    })
+  checkPassword(group: FormGroup) {
+    const password = group.get('password')?.value;
+    const confirmPassword = group.get('confirmPassword')?.value;
+
+    if (password === confirmPassword) {
+      return null
+    }
+    return { mismatch: true }
+  }
+  constructor(private fb: FormBuilder, private auth: AuthService, private router:Router) {
 
   }
-
-  sbtn(){
-   
-    this.router.navigate(['login']);
-    //$('.form-box1').css('z-index', '99');
-    $('.form-box').css('display','block');
-    $('.form-box1').css('display','none');
+  onHandleSubmit() {
+    if (this.formSignup.valid) {
+      this.auth.signup(this.formSignup.value).subscribe(data => {
+        // console.log(data);
+        alert("Register successfully");
+        this.formSignup.reset();
+        this.router.navigate(["signin"])
+      })
+    }
   }
 }
