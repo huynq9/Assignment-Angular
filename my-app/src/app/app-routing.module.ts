@@ -24,8 +24,8 @@ const routes: Routes = [
     component: LayOutClientComponent,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent ,canActivate:[AuthGuard]},
-      { path: 'cart', component: CartComponent },
+      { path: 'home', component: HomeComponent },
+      { path: 'cart', component: CartComponent ,canActivate:[AuthGuard]},
       { path: 'categories', component: CateComponent },
       { path: 'product-detail', component: ProductDetailComponent },
       { path: 'check-out', component: CheckoutComponent },

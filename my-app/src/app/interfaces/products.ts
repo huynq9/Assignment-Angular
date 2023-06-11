@@ -1,30 +1,22 @@
 export interface IProduct {
-  _id?: string;
+  _id?: string | number;
   name: string;
   price: number;
   price_sale: number;
   sale_offer: number;
   desc: string;
+  image: Array<string>;
   isNew: boolean;
-  isInvistable: boolean;
-  isFavorite: boolean;
+  isInvisible: boolean;
+  isFavorited: boolean;
   categoryId: string;
-}
-export interface IFormProduct {
-  _id?: string;
-  name: string;
-  price: number;
-  price_sale: number;
-  sale_offer: number;
-  desc: string;
-  categoryId: string;
-}
-
-export interface IFormProduct {
-  _id?: string;
-  name: string;
-  price: number;
   quantity: number;
+}
+export interface IFormProduct {
+  _id?: string;
+  name: string;
+  price: number;
+  // quantity: number;
   price_sale: number;
   sale_offer: number;
   desc: string;
