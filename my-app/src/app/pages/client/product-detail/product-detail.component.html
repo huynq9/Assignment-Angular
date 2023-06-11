@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="flex">
   <section data-auto-id="image-grid" class="grid grid-cols-2 gap-4 overflow-y-auto w-8/12">
     <!-- <-- section 1 -->
@@ -20,6 +21,53 @@
     </div>
   </section>
   <section class="overflow-hidden w-4/12">
-    <h1></h1>
+    <div class="m-16">
+      <h1 class="text-3xl font-extrabold">{{product.name}}</h1>
+      <div class="flex">
+        <div>
+          <p *ngIf="product.price_sale === product.price" class="font-bold mt-4">
+            <span class="line-through">${{ product.price }}</span>
+          </p>
+
+          <p *ngIf="product.price_sale !== product.price" class="font-bold mt-4">
+            <span class="text-red-600 font-bold text-xl">${{ product.price_sale }}</span>
+            <span class="line-through">${{ product.price }}</span>
+          </p>
+        </div>
+        <p *ngIf="product.sale_offer" class="font-bold mt-4 absolute right-28">
+          <span class="inline-block bg-red-600 text-white px-2 py-1 rounded">
+            {{product.sale_offer}}%OFF
+          </span>
+        </p>
+      </div>
+      <h2 class="font-bold mt-2">Description: {{product.desc}}</h2>
+      <p class="font-bold mt-48 ">IN STOCK REMAINING: {{product.quantity}}</p>
+      <div class="flex mt-2">
+        <a routerLink="/shop-collection"
+          class="group relative inline-block text-md font-medium text-black focus:outline-none focus:ring active:text-black my-4">
+          <span
+            class="absolute inset-0 translate-x-1 translate-y-1 bg-black transition-transform group-hover:translate-y-0 group-hover:translate-x-0"></span>
+
+          <span class="relative block border border-current text-white bg-black px-28 py-3 ">
+            ADD TO BAG <span class="inline-block absolute mx-2"><svg fill="none" stroke="currentColor"
+                stroke-width="1.5" width="25" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3">
+                </path>
+              </svg></span>
+          </span>
+        </a>
+        <button class="pi z-10  mx-auto " style="font-size: 25px;" *ngIf="product"
+          [class.pi-heart-fill]="product.isFavorited === true" [class.pi-heart]="product.isFavorited === false"
+          (click)="onCarouselClick(product)"></button>
+      </div>
+
+
+
+
+
+
+
+
+    </div>
   </section>
 </div>

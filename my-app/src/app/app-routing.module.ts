@@ -14,6 +14,7 @@ import { ProductDetailComponent } from './pages/client/product-detail/product-de
 import { NotFoundComponent } from './pages/client/not-found/not-found.component';
 import { CheckoutComponent } from './pages/client/checkout/checkout.component';
 import { EditComponent } from './pages/admin/edit/edit.component';
+import { ShopcolectionComponent } from './pages/client/shopcolection/shopcolection.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
       { path: 'categories', component: CateComponent },
       { path: 'product-detail/:id', component: ProductDetailComponent },
       { path: 'check-out', component: CheckoutComponent },
+      { path: 'shop-collection', component: ShopcolectionComponent },
     ],
   },
   {
