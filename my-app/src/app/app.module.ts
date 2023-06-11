@@ -16,17 +16,21 @@ import { CardCategoryComponent } from './components/client/card-category/card-ca
 import { DropdownModule } from 'primeng/dropdown';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 
-import { AddComponent } from './pages/admin/component/add/add.component';
-import { NavadminComponent } from './pages/admin/component/navadmin/navadmin.component';
 import { CateComponent } from './pages/client/cate/cate.component';
 import { CartComponent } from './pages/client/cart/cart.component';
 import { CheckoutComponent } from './pages/client/checkout/checkout.component';
 import { SignInComponent } from './pages/client/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/client/sign-up/sign-up.component';
 import { ProductDetailComponent } from './pages/client/product-detail/product-detail.component';
+import { CarouselModule } from 'primeng/carousel';
+import { AddComponent } from './pages/admin/add/add.component';
+import { NavadminComponent } from './components/admin/navadmin/navadmin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
-// import { AuthComponent } from './services/auth/auth.component'
+import { LayOutAdminComponent } from './layouts/admin/lay-out-admin/lay-out-admin.component';
+import { NotFoundComponent } from './pages/client/not-found/not-found.component';
+import { HttpClientModule } from '@angular/common/http';
+import { EditComponent } from './pages/admin/edit/edit.component';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -43,8 +47,15 @@ import { HttpClientModule} from '@angular/common/http';
     NavadminComponent,
     SignUpComponent,
     SignInComponent,
+
     ProductDetailComponent,
     // AuthComponent
+
+    ProductDetailComponent,
+    LayOutAdminComponent,
+    NotFoundComponent,
+    EditComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -54,10 +65,14 @@ import { HttpClientModule} from '@angular/common/http';
     RippleModule,
     ButtonModule,
     DropdownModule,
+
     FormsModule, 
+    CarouselModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
-  
+    ToastModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

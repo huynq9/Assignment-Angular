@@ -1,11 +1,22 @@
-import { NgModule } from '@angular/core';
+import { CateComponent } from './pages/client/cate/cate.component';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/client/home/home.component';
 import { LayOutClientComponent } from './layouts/client/lay-out-client/lay-out-client.component';
-import { SignUpComponent } from './pages/client/sign-up/sign-up.component';
+
+import { CartComponent } from './pages/client/cart/cart.component';
 import { SignInComponent } from './pages/client/sign-in/sign-in.component';
-import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { AuthGuard } from './guard/auth.guard';
+
+import { SignUpComponent } from './pages/client/sign-up/sign-up.component';
+import { LayOutAdminComponent } from './layouts/admin/lay-out-admin/lay-out-admin.component';
+import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { AddComponent } from './pages/admin/add/add.component';
+import { ProductDetailComponent } from './pages/client/product-detail/product-detail.component';
+import { NotFoundComponent } from './pages/client/not-found/not-found.component';
+import { CheckoutComponent } from './pages/client/checkout/checkout.component';
+
+
 
 const routes: Routes = [
   {
@@ -13,14 +24,27 @@ const routes: Routes = [
     component: LayOutClientComponent,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent,canActivate:[AuthGuard]},
-      { path:'signup', component: SignUpComponent},
-      { path:'signin', component: SignInComponent}
+      { path: 'home', component: HomeComponent ,canActivate:[AuthGuard]},
+      { path: 'cart', component: CartComponent },
+      { path: 'categories', component: CateComponent },
+      { path: 'product-detail', component: ProductDetailComponent },
+      { path: 'check-out', component: CheckoutComponent },
+
     ],
-  }, 
+  },
   {
-    path: 'admin', component: DashboardComponent,canActivate:[AuthGuard]
-  }
+    path: 'admin',
+    component: LayOutAdminComponent,
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard] },
+      { path: 'add', component: AddComponent },
+    ],
+  },
+ { path:'signup', component: SignUpComponent},
+  { path:'signin', component: SignInComponent},
+  { path: '**', component: NotFoundComponent },
+
 ];
 
 @NgModule({

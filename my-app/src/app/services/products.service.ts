@@ -1,13 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { IFormProduct, IProduct } from '../interfaces/products';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
   constructor(private http: HttpClient) {}
+
   getproducts(): Observable<{ products: IProduct[] }> {
     return this.http.get<{ products: IProduct[] }>(
       'http://localhost:9999/api/products'
@@ -17,10 +20,12 @@ export class ProductsService {
     return this.http.get<IProduct[]>(
       'http://localhost:9999/api/products/' + id
     );
-  }
+    }
+    
   addproduct(product: any): Observable<any> {
     return this.http.post<any>('http://localhost:9999/api/products', product);
   }
+
   removeProduct(id: any): Observable<any> {
     return this.http.delete<any>('http://localhost:9999/api/products/' + id);
   }
@@ -39,3 +44,4 @@ export class ProductsService {
     return this.http.patch(url, payload);
   }
 }
+
