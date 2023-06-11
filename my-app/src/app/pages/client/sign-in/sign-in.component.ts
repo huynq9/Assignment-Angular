@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr'
+import { AuthService } from '../../../services/auth.service';
 
 // declare var $:any;
 @Component({
@@ -9,31 +10,38 @@ import { Router } from '@angular/router';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
-export class SignInComponent implements OnInit{
+export class SignInComponent {
 
-  public signinForm!: FormGroup;
+  constructor(private builder: FormBuilder, private toastr: ToastrService, private service: AuthService,
+    private router: Router) {
+      sessionStorage.clear();
 
-  constructor(private formbuilder: FormBuilder,private http: HttpClient, private router: Router) { }
-
-  ngOnInit(): void {
-    this.signinForm = this.formbuilder.group({
-      email: [''],
-      password: ['', Validators.required]
-    })
   }
-  signin(){
-    this.http.get<any>("http://localhost:3000/signup")
-    .subscribe(res=>{
-      const user = res.find((a:any)=>{
-        return a.email === this.signinForm.value.email && a.password === this.signinForm.value.password 
+  result: any;
+
+  loginform = this.builder.group({
+    id: this.builder.control('', Validators.required),
+    password: this.builder.control('', Validators.required)
+  });
+
+  proceedlogin() {
+    if (this.loginform.valid) {
+      this.service.GetUserbyCode(this.loginform.value.id).subscribe(item => {
+        this.result = item;
+        if (this.result.password === this.loginform.value.password) {
+          if (this.result.isactive) {
+            sessionStorage.setItem('username',this.result.id);
+            sessionStorage.setItem('role',this.result.role);
+            this.router.navigate(['']);
+          } else {
+            this.toastr.error('Please contact Admin', 'InActive User');
+          }
+        } else {
+          this.toastr.error('Invalid credentials');
+        }
       });
-      if(user){
-        alert('Login Succesful');
-        this.signinForm.reset()
-        this.router.navigate(["home"])
-      }else{
-        alert("user not found")
-      }
-    })
+    } else {
+      this.toastr.warning('Please enter valid data.')
+    }
   }
 }

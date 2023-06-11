@@ -1,45 +1,37 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-// import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../../services/auth.service';
+import { ToastrService } from 'ngx-toastr'
 declare var $:any;
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit{
-  constructor( private router:Router, private _http:HttpClient) { }
-  singup:FormGroup|any;
-  signuser:any;
-  ngOnInit(): void {
-    this.singup = new FormGroup({
-      'fname': new FormControl(),
-      'lname':new FormControl(),
-      'email':new FormControl(),
-      'phone':new FormControl(),
-      'password': new FormControl()
-    })
-  }
-
-  signupdata(singup:FormGroup){
-    //console.log(this.singup.value);
-    this.signuser = this.singup.value.fname
-    this._http.post<any>("http://localhost:3000/signup", this.singup.value)
-    .subscribe(res=>{
-      alert('data added successfully');
-      this.singup.reset();
-      this.router.navigate(['signin'])
-    })
+export class SignUpComponent{
+  constructor(private builder: FormBuilder, private service: AuthService, private router: Router,
+    private toastr: ToastrService) {
 
   }
 
-  sbtn(){
-   
-    this.router.navigate(['login']);
-    //$('.form-box1').css('z-index', '99');
-    $('.form-box').css('display','block');
-    $('.form-box1').css('display','none');
+  registerform = this.builder.group({
+    id: this.builder.control('', Validators.compose([Validators.required, Validators.minLength(5)])),
+    name: this.builder.control('', Validators.required),
+    password: this.builder.control('', Validators.compose([Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])),
+    email: this.builder.control('', Validators.compose([Validators.required, Validators.email])),
+    role: this.builder.control(''),
+    isactive: this.builder.control(false)
+  });
+  proceedregister() {
+    if (this.registerform.valid) {
+      this.service.RegisterUser(this.registerform.value).subscribe(result => {
+        this.toastr.success('Please contact admin for enable access.','Registered successfully')
+        this.router.navigate(['login'])
+      });
+    } else {
+      this.toastr.warning('Please enter valid data.')
+    }
   }
+
 }

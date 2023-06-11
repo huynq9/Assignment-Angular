@@ -11,3 +11,14 @@ export interface IProduct {
   size: Array<string>;
   color: Array<string>;
 }
+
+export interface IFormProduct {
+  _id?: string;
+  name: string;
+  price: number;
+  quantity: number;
+  price_sale: number;
+  sale_offer: number;
+  desc: string;
+  categoryId: string;
+}

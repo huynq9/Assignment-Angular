@@ -25,7 +25,8 @@ import { SignInComponent } from './pages/client/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/client/sign-up/sign-up.component';
 import { ProductDetailComponent } from './pages/client/product-detail/product-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http'
+import { HttpClientModule} from '@angular/common/http';
+// import { AuthComponent } from './services/auth/auth.component'
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { HttpClientModule} from '@angular/common/http'
     NavadminComponent,
     SignUpComponent,
     SignInComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    // AuthComponent
   ],
   imports: [
     BrowserModule,
